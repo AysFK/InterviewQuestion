@@ -1,9 +1,9 @@
-// ConstructBinaryTree.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// ConstructBinaryTree.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 /*
-//Ê÷£¨³ı¸ù½ÚµãÍâ£¬Ã¿¸ö½Úµã¶¼ÓĞÒ»¸ö¸¸½Úµã£»³ıÒ¶×Ó½ÚµãÍâ£¬Ã¿¸ö½ÚµãÓĞÒ»¸ö»ò¶à¸ö×Ó½Úµã£©
-//¶ş²æÊ÷£¨×î¶àÖ»ÓĞÁ½¸ö×Ó½ÚµãµÄÊ÷£» ¿¼²ì±éÀúÇ°ÖĞºóĞò£¬µİ¹é£¬·Çµİ¹é£©
-//¶ş²æËÑË÷Ê÷£¬B-Ê÷£¨ËÑË÷Ê÷£º±í¶¯Ì¬¼¯£¬¶ş·ÖËÑË÷ĞèË³Ğò±í£¬²åÉ¾·ÑÊ±£¬Ïà±ÈÏÂ£¬ËÑË÷Ê÷£¬ËÑË÷Ğ§ÂÊ£¬²åÈëÉ¾³ı×ÛºÏ½ÏºÃ£©
-//¶ş²æÊ÷ÌØÀı£¨¶ş²æËÑË÷Ê÷£¬¶Ñ£¬ºìºÚÊ÷£©
+//æ ‘ï¼ˆé™¤æ ¹èŠ‚ç‚¹å¤–ï¼Œæ¯ä¸ªèŠ‚ç‚¹éƒ½æœ‰ä¸€ä¸ªçˆ¶èŠ‚ç‚¹ï¼›é™¤å¶å­èŠ‚ç‚¹å¤–ï¼Œæ¯ä¸ªèŠ‚ç‚¹æœ‰ä¸€ä¸ªæˆ–å¤šä¸ªå­èŠ‚ç‚¹ï¼‰
+//äºŒå‰æ ‘ï¼ˆæœ€å¤šåªæœ‰ä¸¤ä¸ªå­èŠ‚ç‚¹çš„æ ‘ï¼› è€ƒå¯Ÿéå†å‰ä¸­ååºï¼Œé€’å½’ï¼Œéé€’å½’ï¼‰
+//äºŒå‰æœç´¢æ ‘ï¼ŒB-æ ‘ï¼ˆæœç´¢æ ‘ï¼šè¡¨åŠ¨æ€é›†ï¼ŒäºŒåˆ†æœç´¢éœ€é¡ºåºè¡¨ï¼Œæ’åˆ è´¹æ—¶ï¼Œç›¸æ¯”ä¸‹ï¼Œæœç´¢æ ‘çš„æœç´¢æ•ˆç‡ï¼Œæ’å…¥åˆ é™¤ç»¼åˆè¾ƒå¥½ï¼‰
+//äºŒå‰æ ‘ç‰¹ä¾‹ï¼ˆäºŒå‰æœç´¢æ ‘ï¼Œå †ï¼Œçº¢é»‘æ ‘ï¼‰
 //*/
 #include "stdafx.h"
 #include "..\Utilities\BinaryTree.h"
@@ -22,12 +22,12 @@ BinaryTreeNode* Construct(int* preorder, int* inorder, int lentgh)
 
 BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startInorder, int* endInorder)
 {
-	//¸ù½Úµã
+	//æ ¹èŠ‚ç‚¹
 	int rootValue = startPreorder[0];
 	BinaryTreeNode* root = new BinaryTreeNode();
 	root->m_nValue = rootValue;
 	root->m_pLeft = root->m_pRight = NULL;
-	//Ò»¸ö½Úµã¼°Òì³£´¦Àí
+	//ä¸€ä¸ªèŠ‚ç‚¹åŠå¼‚å¸¸å¤„ç†
 	if (startPreorder == endPreorder)
 	{
 		if (startInorder == endInorder && *startPreorder == *startInorder)
@@ -35,8 +35,8 @@ BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startIn
 		else
 			throw std::exception("Invalid input");
 	}
-	//×Ó´®µİ¹éÇó½Úµã
-	//×¢ÒâÌõ¼ş¿ØÖÆ£¬Ğ´³öĞòÁĞÅĞ¶Ï
+	//å­ä¸²é€’å½’æ±‚èŠ‚ç‚¹
+	//æ³¨æ„æ¡ä»¶æ§åˆ¶ï¼Œå†™å‡ºåºåˆ—åˆ¤æ–­
 	int* rootInorder = startInorder;
 	while (rootInorder <= endInorder && *rootInorder != rootValue)
 	{
@@ -45,16 +45,16 @@ BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startIn
 	int leftLength = rootInorder - startInorder;
 	int* leftPreorderEnd = startPreorder + leftLength;
 	if (leftLength > 0)
-	{//×ó×ÓÊ÷
+	{//å·¦å­æ ‘
 		root->m_pLeft = ConstructCore(startPreorder + 1, leftPreorderEnd, startInorder, rootInorder - 1);
 	}
 	if (leftLength < endPreorder - startPreorder)
-	{//ÓÒ×ÓÊ÷
+	{//å³å­æ ‘
 		root->m_pRight = ConstructCore(leftPreorderEnd + 1, endPreorder, rootInorder + 1, endInorder);
 	}
 	return root;
 }
-// ====================²âÊÔ´úÂë====================
+// ====================æµ‹è¯•ä»£ç ====================
 void TEST(char* testName, int* preorder, int* inorder, int length)
 {
 	if (testName != NULL)
@@ -79,7 +79,7 @@ void TEST(char* testName, int* preorder, int* inorder, int length)
 		printf("Invalid Input.\n");
 	}
 }
-//ÆÕÍ¨Ê÷
+//æ™®é€šæ ‘
 void Test1()
 {
 	const int lentgh = 8;
@@ -88,7 +88,7 @@ void Test1()
 
 	TEST(__FUNCTION__, preorder, inorder, lentgh);
 }
-//ÎŞ×ó×Ó½Úµã
+//æ— å·¦å­èŠ‚ç‚¹
 void Test2()
 {
 	const int length = 5;
@@ -98,7 +98,7 @@ void Test2()
 	TEST(__FUNCTION__, preorder, inorder, length);
 }
 
-// ÎŞ×ó×Ó½áµã               
+// æ— å·¦å­ç»“ç‚¹               
 void Test3()
 {
 	const int length = 5;
@@ -108,7 +108,7 @@ void Test3()
 	TEST(__FUNCTION__, preorder, inorder, length);
 }
 
-//Ê÷ÖĞÖ»ÓĞÒ»¸ö½áµã
+//æ ‘ä¸­åªæœ‰ä¸€ä¸ªç»“ç‚¹
 void Test4()
 {
 	const int length = 1;
@@ -118,7 +118,7 @@ void Test4()
 	TEST(__FUNCTION__, preorder, inorder, length);
 }
 
-//ÍêÈ«¶ş²æÊ÷
+//å®Œå…¨äºŒå‰æ ‘
 void Test5()
 {
 	const int length = 7;
@@ -128,13 +128,13 @@ void Test5()
 	TEST(__FUNCTION__, preorder, inorder, length);
 }
 
-// ÊäÈë¿ÕÖ¸Õë
+// è¾“å…¥ç©ºæŒ‡é’ˆ
 void Test6()
 {
 	TEST(__FUNCTION__, NULL, NULL, 0);
 }
 
-// ÊäÈëµÄÁ½¸öĞòÁĞ²»Æ¥Åä
+// è¾“å…¥çš„ä¸¤ä¸ªåºåˆ—ä¸åŒ¹é…
 void Test7()
 {
 	const int length = 7;
