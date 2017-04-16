@@ -1,4 +1,5 @@
 #pragma once
+
 struct BinaryTreeNode
 {
 	int         m_nValue;
