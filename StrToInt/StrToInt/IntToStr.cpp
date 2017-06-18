@@ -26,7 +26,7 @@ char* IntToStr(int num)
 	str[j] = 0;
 	return str;
 }
-
+/*
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//IntToStr
@@ -36,7 +36,4 @@ int _tmain(int argc, _TCHAR* argv[])
 	int num = StrToInt("123456");//printf("%s\n", str);
 	cout << num - 1<< endl;
 	return 0;
-}
-
-
-
+}*/

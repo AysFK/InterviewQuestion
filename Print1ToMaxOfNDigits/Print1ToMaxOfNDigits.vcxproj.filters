@@ -24,30 +24,12 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LinearList.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="StrToInt.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="IntToStr.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="temp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="LinearList.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CMyString.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="源.cpp">
+    <ClCompile Include="Print1ToMaxOfNDigits.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
